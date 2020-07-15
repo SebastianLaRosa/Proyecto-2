@@ -19,14 +19,10 @@ while True:
                 if n == line:
                     p = True
                     break
-                else:
-                    p = False
-                    print("Su nombre no ha sido encontrado, por favor, ingrese un nombre de alguien que ya haya realizado una compra")
-
         break
 
 
-'''from Admin import buscar_productos
+from Admin import buscar_productos
 from Admin import lugares
 from Admin import productos
 from Admin import carrito_compras
@@ -60,4 +56,4 @@ while True:
             salir = str(input("¿Usted desea salir?, recuerde que no se guardarán los elementos de su carrito de compras: "))
             if salir.lower() == "si":
                 break
-            print("\n")'''
+            print("\n")
