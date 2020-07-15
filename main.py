@@ -1,10 +1,40 @@
-from Admin import buscar_productos
+while True:
+    print("Si desea registrarse, ingrese 1, si desea hacer una compra anonima, ingrese 2: ")
+    x = int(input("Ingrese una opcion: "))
+    print("")
+    if x == 1:
+        print("Si es su primera compra, ingrese 1, si ya esta registrado ingrese 2")
+        r = int(input("Ingrese una opcion: "))
+        print("")
+        if r == 1:
+            n = str(input("Ingrese su nombre: "))
+            write = open('Cuentas.txt', 'a')
+            write.write(n)
+            write.write("\n")
+            write.close()
+        if r == 2:
+            n = input("Ingrese su nombre: ")
+            read = open('Cuentas.txt', 'r')
+            for line in read.readlines():
+                if n == line:
+                    p = True
+                    break
+                else:
+                    p = False
+                    print("Su nombre no ha sido encontrado, por favor, ingrese un nombre de alguien que ya haya realizado una compra")
+
+        break
+
+
+'''from Admin import buscar_productos
 from Admin import lugares
 from Admin import productos
 from Admin import carrito_compras
 from Admin import carrito
 from Admin import pago
 from Admin import monto_pagar
+
+print("")
 while True:
 #Este es el primer menu que el usuario encuentra
     print("Menu Principal")
@@ -30,4 +60,4 @@ while True:
             salir = str(input("¿Usted desea salir?, recuerde que no se guardarán los elementos de su carrito de compras: "))
             if salir.lower() == "si":
                 break
-            print("\n")
+            print("\n")'''

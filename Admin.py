@@ -21,6 +21,8 @@ productos = [
 carrito_compras = []
 monto_pagar = 0
 
+import csv
+
 
 def buscar_productos(lugares, productos):
     print("Lugares")
@@ -39,10 +41,25 @@ def buscar_productos(lugares, productos):
                 else:
                     while True:
                         print("Se encontraron ", len(lista_productos_encontrados), " productos")
+                        v = 0
+                        v_2 = 7
+                        for w in range(len(lista_productos_encontrados)):
+                            if len(lista_productos_encontrados[w]['nombre']) - 7 > v:
+                                v = len(lista_productos_encontrados[w]['nombre']) - 7
+                            if len(lista_productos_encontrados[w]['nombre']) > v_2:
+                                v_2 = len(lista_productos_encontrados[w]['nombre'])
+                        print("Producto", " "*5, "Nombre", " " *v, "Precio", " "*7,"Cantidad")
+                        print("")
                         for z in range(len(lista_productos_encontrados)):
-                            print("Producto", z+1)
-                            print("Nombre : ",lista_productos_encontrados[z]['nombre'])
-                            print("Precio : ", lista_productos_encontrados[z]['precio'])
+                            with open('Cuentas.csv', 'r') as file:
+                                reader = csv.reader(file)
+                                next(file)
+                                for line in reader:
+                                    if line[0] == lista_productos_encontrados[z]['nombre']:
+                                        x = line[1]
+                            print(" "*3, z+1, "\t", lista_productos_encontrados[z]['nombre'], " "*(v_2-len(lista_productos_encontrados[z]['nombre'])), "\t",lista_productos_encontrados[z]['precio']," "*v, x)
+                            print("")
+
                         print("Si desea salir, ingrese '0'")
                         opcion_productos = int(input("Ingrese que productos desea agregar al carrito : "))
                         if 1 <= opcion_productos <= len(lista_productos_encontrados):
@@ -83,3 +100,4 @@ def pago():
         elif n == 2:
             print("Nuestras tiendas no estan disponibles por el momento")
             n = int(input("Elija otra opcion: "))
+
